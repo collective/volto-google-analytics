@@ -21,5 +21,8 @@
   },
   "scripts": {
     "release": "release-it"
+  },
+  "dependencies": {
+    "react-ga": "2.7.0"
   }
 }

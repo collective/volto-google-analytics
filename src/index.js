@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import ReactGA from 'react-ga'
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
-const trackingCode = process.env.RAZZLE_GA_CODE
+const trackingCode = process.env.RAZZLE_GA_CODE;
 
 if (__CLIENT__ && trackingCode) {
   ReactGA.initialize(trackingCode, {
@@ -10,15 +10,17 @@ if (__CLIENT__ && trackingCode) {
     gaOptions: {
       anonymizeIp: true,
     },
-  })
+  });
 }
 
 const useGoogleAnalytics = () => {
-  let location = useLocation()
+  let location = useLocation();
 
   useEffect(() => {
-    ReactGA.pageview(location.pathname)
-  }, [location])
-}
+    ReactGA.pageview(location.pathname);
+  }, [location]);
+};
 
-export { useGoogleAnalytics }
+export { useGoogleAnalytics };
+
+export default config => config;

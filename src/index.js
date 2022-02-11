@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga';
+import config from '@plone/volto/registry';
 
 const trackingCode = process.env.RAZZLE_GA_CODE;
 const cookieExpires =

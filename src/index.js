@@ -5,7 +5,7 @@ import config from '@plone/volto/registry';
 
 const trackingCode = process.env.RAZZLE_GA_CODE;
 const cookieExpires =
-  config.settings['volto-google-analytics'].cookieExpires ??
+  config.settings?.['volto-google-analytics']?.cookieExpires ??
   6 * 30 * 24 * 60 * 60; // in seconds. Default: 6 month
 
 if (__CLIENT__ && trackingCode) {

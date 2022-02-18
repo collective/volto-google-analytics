@@ -1,6 +1,6 @@
 {
   "name": "volto-google-analytics",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Volto addon for Google Analytics integration",
   "main": "src/index.js",
   "repository": "https://github.com/collective/volto-google-analytics.git",

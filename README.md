@@ -6,7 +6,6 @@ To be used with mrs-developer, see [Volto docs](https://docs.voltocms.com/custom
 
 Created with [voltocli](https://github.com/nzambello/voltocli).
 
-
 ## Usage
 
 Add in your `.env` file of choice a variable:
@@ -27,4 +26,13 @@ const Footer = () => {
     ...
   )
 }
+```
+
+### Cookies expire
+
+By default, Google Analytics cokkies expiration is set to 6 month.
+But you colud change the expiration period (expressing it in seconds), setting it from config:
+
+```jsx
+config.settings['volto-google-analytics'].cookieExpires = 6 * 30 * 24 * 60 * 60; // in seconds. Default: 6 month
 ```

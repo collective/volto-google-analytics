@@ -39,12 +39,13 @@ if (__CLIENT__) {
 
 const useGoogleAnalytics = () => {
   let location = useLocation();
-  const UA_trackingCode =
-    window?.env?.RAZZLE_GA_CODE || process.env.RAZZLE_GA_CODE;
-  const GA4_trackingCode =
-    window?.env?.RAZZLE_GA4_CODE || process.env.RAZZLE_GA4_CODE;
 
   useEffect(() => {
+    const UA_trackingCode =
+      window?.env?.RAZZLE_GA_CODE || process.env.RAZZLE_GA_CODE;
+    const GA4_trackingCode =
+      window?.env?.RAZZLE_GA4_CODE || process.env.RAZZLE_GA4_CODE;
+
     if (UA_trackingCode) {
       ReactGA.pageview(location.pathname);
     }

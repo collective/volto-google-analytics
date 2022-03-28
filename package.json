@@ -17,7 +17,8 @@
     "@plone/volto": ">=14.0.0"
   },
   "dependencies": {
+    "@plone/scripts": "*",
     "react-ga": "2.7.0",
-    "@plone/scripts": "*"
+    "react-ga4": "^1.4.1"
   }
 }

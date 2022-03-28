@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga';
+import { ReactGA as ReactGA4 } from 'react-ga4';
 import config from '@plone/volto/registry';
 
 const cookieExpires =
@@ -8,9 +9,10 @@ const cookieExpires =
   6 * 30 * 24 * 60 * 60; // in seconds. Default: 6 month
 
 if (__CLIENT__) {
-  const trackingCode =  window?.env?.RAZZLE_GA_CODE || process.env.RAZZLE_GA_CODE;
-  if(trackingCode){
-    ReactGA.initialize(trackingCode, {
+  const UA_trackingCode =
+    window?.env?.RAZZLE_GA_CODE || process.env.RAZZLE_GA_CODE;
+  if (UA_trackingCode) {
+    ReactGA.initialize(UA_trackingCode, {
       debug: __DEVELOPMENT__ ?? false,
       gaOptions: {
         anonymizeIp: true,
@@ -18,13 +20,37 @@ if (__CLIENT__) {
       },
     });
   }
+
+  const GA4_trackingCode =
+    window?.env?.RAZZLE_GA4_CODE || process.env.RAZZLE_GA4_CODE;
+  if (GA4_trackingCode) {
+    ReactGA4.initialize([
+      {
+        testMode: __DEVELOPMENT__ ?? false,
+        trackingId: GA4_trackingCode,
+        gaOptions: {
+          anonymizeIp: true,
+          cookieExpires: cookieExpires,
+        },
+      },
+    ]);
+  }
 }
 
 const useGoogleAnalytics = () => {
   let location = useLocation();
+  const UA_trackingCode =
+    window?.env?.RAZZLE_GA_CODE || process.env.RAZZLE_GA_CODE;
+  const GA4_trackingCode =
+    window?.env?.RAZZLE_GA4_CODE || process.env.RAZZLE_GA4_CODE;
 
   useEffect(() => {
-    ReactGA.pageview(location.pathname);
+    if (UA_trackingCode) {
+      ReactGA.pageview(location.pathname);
+    }
+    if (GA4_trackingCode) {
+      ReactGA4.send({ hitType: 'pageview', page: location.pathname });
+    }
   }, [location]);
 };
 

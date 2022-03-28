@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga';
-import { ReactGA as ReactGA4 } from 'react-ga4';
+import { default as ReactGA4 } from 'react-ga4';
 import config from '@plone/volto/registry';
 
 const cookieExpires =

@@ -6,6 +6,8 @@ To be used with mrs-developer, see [Volto docs](https://docs.voltocms.com/custom
 
 Created with [voltocli](https://github.com/nzambello/voltocli).
 
+If using Volto < 16, use v1.3.0.
+
 ## Usage
 
 Add in your `.env` file of choice a variable:

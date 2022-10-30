@@ -11,13 +11,13 @@
     "release": "release-it"
   },
   "devDependencies": {
-    "release-it": "*"
+    "@plone/scripts": "^2.0.0",
+    "release-it": "^14.10.1"
   },
   "peerDependencies": {
-    "@plone/volto": ">=14.0.0"
+    "@plone/volto": ">=16.0.0-alpha.38"
   },
   "dependencies": {
-    "@plone/scripts": "*",
     "react-ga": "2.7.0",
     "react-ga4": "^1.4.1"
   }

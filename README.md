@@ -34,6 +34,22 @@ const Footer = () => {
   )
 }
 ```
+### GDPL
+
+If your portal needs to follow GDPL, you can pass a parameter to the `useGoogleAnalytics` hook telling it whether or not we can create a cookie. If `false` is passed, GA will not be initialized, causing the cookie not to be created. The page view will also not be counted. If `true` is passed and GA has not been initialized, it will be initialized and the cookie will be written. If the parameter is not passed, `true` will be assumed. Example:
+
+```jsx
+import { useGoogleAnalytics } from 'volto-google-analytics'
+
+const Footer = ({cookieAllowed}) => {
+
+  useGoogleAnalytics(cookieAllowed);
+
+  return (
+    ...
+  )
+}
+```
 
 ### Cookies expire
 

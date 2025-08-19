@@ -8,7 +8,7 @@ const cookieExpires =
   config.settings?.['volto-google-analytics']?.cookieExpires ??
   6 * 30 * 24 * 60 * 60; // in seconds. Default: 6 month
 
-const initializeGA = () => {
+const initializeGA = (options = {}) => {
   if (__CLIENT__) {
     const UA_trackingCode =
       window?.env?.RAZZLE_GA_CODE || process.env.RAZZLE_GA_CODE;
@@ -18,6 +18,7 @@ const initializeGA = () => {
         gaOptions: {
           anonymizeIp: true,
           cookieExpires: cookieExpires,
+          ...options,
         },
       });
     }
@@ -32,6 +33,7 @@ const initializeGA = () => {
           gaOptions: {
             anonymizeIp: true,
             cookieExpires: cookieExpires,
+            ...options,
           },
         },
       ]);
@@ -45,7 +47,7 @@ const isGAInitialized = () => {
   }
 };
 
-const useGoogleAnalytics = (cookieAllowed = true) => {
+const useGoogleAnalytics = (cookieAllowed = true, options = {}) => {
   let location = useLocation();
 
   useEffect(() => {
@@ -53,7 +55,7 @@ const useGoogleAnalytics = (cookieAllowed = true) => {
       return;
     }
     if (!isGAInitialized()) {
-      initializeGA();
+      initializeGA(options);
     }
     const UA_trackingCode =
       window?.env?.RAZZLE_GA_CODE || process.env.RAZZLE_GA_CODE;

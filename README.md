@@ -34,16 +34,27 @@ const Footer = () => {
   )
 }
 ```
+
 ### GDPL
 
-If your portal needs to follow GDPL, you can pass a parameter to the `useGoogleAnalytics` hook telling it whether or not we can create a cookie. If `false` is passed, GA will not be initialized, causing the cookie not to be created. The page view will also not be counted. If `true` is passed and GA has not been initialized, it will be initialized and the cookie will be written. If the parameter is not passed, `true` will be assumed. Example:
+If your portal needs to follow GDPL, you can pass a parameter to the `useGoogleAnalytics` hook telling it whether or not we can create a cookie. If `false` is passed, GA will not be initialized, causing the cookie not to be created. The page view will also not be counted. If `true` is passed and GA has not been initialized, it will be initialized and the cookie will be written. If the parameter is not passed, `true` will be assumed.
+
+Also, you could passing down some `options`. For example, if you want to inizialize GA without profiling cookie (\_ga,\_gid, \_gat), you could pass this options: `{ storage: 'none',     clientId: Date.now()}`.
+
+Example:
 
 ```jsx
 import { useGoogleAnalytics } from 'volto-google-analytics'
 
 const Footer = ({cookieAllowed}) => {
 
-  useGoogleAnalytics(cookieAllowed);
+
+  const options = {
+    storage: 'none',        // no profiling cookie
+    clientId: Date.now(),   // temp clientId
+  };
+
+  useGoogleAnalytics(cookieAllowed, options);
 
   return (
     ...
